@@ -32,3 +32,24 @@ function fibRec(n) {
   return store
 }
 
+
+// mergeSort
+
+function mergeSort(array) {
+    let orderedArray = []
+    
+    if((array.length === 1)) return array
+    else {
+      let rightSide = array.splice(Math.round((array.length-1)/2)) 
+      let l = mergeSort(array)
+      let r = mergeSort(rightSide)
+      let arraySize = l.length + r.length
+
+      for (let i = 0; i < arraySize; i++) {
+        if(l[0]<r[0] || r.length === 0) orderedArray.push(Number(l.splice(0, 1)))
+        else if (r[0]<l[0] || l.length === 0) orderedArray.push(Number(r.splice(0, 1)))
+      }
+    }
+
+  return orderedArray
+}
